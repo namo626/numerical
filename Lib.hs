@@ -24,6 +24,11 @@ dec2Beta beta n = iter n []
           | otherwise = iter quotient (remainder:rems)
           where (quotient, remainder) = quotRem m beta
 
+
+
+-----------------------------
+-- Decimal to binary conversion
+
 dec2Bin :: Double -> ([Int], [Int])
 dec2Bin 0 = ([0], [0])
 dec2Bin x = (dec2Beta 2 int, frac2Bin frac)
