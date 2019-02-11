@@ -16,12 +16,13 @@ hw = zip [-1, 0, 1, 2, 3] [5, 1, 0, 2, 7]
 function :: Double -> Double
 function x = 1 / (1 + x^2)
 
-p2 :: Polynomial
-p2 = mkNewton $ zip [-2, 0, 2] [1/5, 1, 1/5]
+-- p2 :: Polynomial
+-- p2 = mkNewton $ zip xs (map function xs)
+--   where xs = [-2, 0, 2]
 
-p4 :: Polynomial
-p4 = mkNewton $ zip xs (map function xs)
-  where xs = [-2,-1,0,1,2]
+-- p4 :: Polynomial
+-- p4 = mkNewton $ zip xs (map function xs)
+--   where xs = [-4,-2,0,2,4]
 
 
 -- representation for newton polynomial
