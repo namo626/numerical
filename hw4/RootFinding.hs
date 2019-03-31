@@ -10,12 +10,12 @@ newton f f' x0 = x0 : newton f f' x1
     v0 = f x0
     x1 = x0 - v0 / (f' x0)
 
-selectNewton ::  Double -> Double -> [(Double, Double)] -> [(Double, Double)]
-selectNewton delta epsilon xs =
-  map (\(a,b,c) -> (a,b)) $ takeWhile (\(x, v, d) -> (d >= delta)) xs'
+-- selectNewton ::  Double -> Double -> [(Double, Double)] -> [(Double, Double)]
+-- selectNewton delta epsilon xs =
+--   map (\(a,b,c) -> (a,b)) $ takeWhile (\(x, v, d) -> (d >= delta)) xs'
 
-  where
-    xs' = zipWith (\(x1,v1) (x0,v0) -> (x0,v0, abs (x1-x0))) (tail xs) xs
+--   where
+--     xs' = zipWith (\(x1,v1) (x0,v0) -> (x0,v0, abs (x1-x0))) (tail xs) xs
 
 display :: (Double -> [Double]) -> Int -> Double -> IO ()
 display ns amount x0 = mapM_ print$ take amount $ ns x0
