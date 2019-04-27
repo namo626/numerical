@@ -29,11 +29,14 @@ def lorenz_eq(sigma, rho, beta, state):
 F_lorenz = partial(lorenz_eq, 10, 28, 8/3)
 X0_lorenz = np.array([1.0, 1.0, 1.0])
 
-lorenz_rk4 = rk4_system(F_lorenz, X0_lorenz, 0, 40, 0.01)
+# lorenz_rk4 = rk4_system(F_lorenz, X0_lorenz, 0, 40, 0.01)
 lorenz_rk4_test = rk4(F_lorenz, X0_lorenz, 0, 40, 0.01)
-lorenz_euler = euler_system(F_lorenz, X0_lorenz, 0, 40, 0.01)
+# lorenz_euler = euler_system(F_lorenz, X0_lorenz, 0, 40, 0.01)
 lorenz_euler_test = euler(F_lorenz, X0_lorenz, 0, 40, 0.01)
-lorenz_pc = predictor_corrector(F_lorenz, X0_lorenz, 0, 40, 0.01)
+lorenz_pc = adams_pc(F_lorenz, X0_lorenz, 0, 40, 0.01)
+lorenz_pc_new = adams_bashforth_moulton(F_lorenz, X0_lorenz, 0, 40, 0.01)
+
+
 
 
 def func(t, x):
