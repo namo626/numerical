@@ -8,8 +8,12 @@ from steppers import *
 
 ''' A collection of common methods '''
 
-def adams_bashforth_moulton(F, X0, t0, tf, h):
-    stepper = make_pc_stepper(adams_bashforth, adams_moulton)
+def adams_bashforth_moulton4(F, X0, t0, tf, h):
+    stepper = make_pc_stepper(adams_bashforth_4, adams_moulton_4)
+    return multistep_method(4, stepper, F, X0, t0, tf, h)
+
+def adams_bashforth_moulton5(F, X0, t0, tf, h):
+    stepper = make_pc_stepper(adams_bashforth_5, adams_moulton_5)
     return multistep_method(5, stepper, F, X0, t0, tf, h)
 
 def euler(F, X0, t0, tf, h):

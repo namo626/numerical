@@ -1,10 +1,10 @@
 import importlib
-import lineFlow
 import solution
+import methods
 importlib.reload(solution)
-importlib.reload(lineFlow)
+importlib.reload(methods)
 from solution import *
-from lineFlow import *
+from methods import *
 from functools import partial
 
 
@@ -24,9 +24,4 @@ tf = 40.0
 h = 0.01
 
 lorenz_rk4 = rk4(F, X0, t0, tf, h)
-lorenz_adams = adams_pc(F, X0, t0, tf, h)
 lorenz_euler = euler(F, X0, t0, tf, h)
-
-t = lorenz_rk4.time
-diff = np.linalg.norm(lorenz_rk4.trajectory - lorenz_adams.trajectory, axis=1)
-logdiff = np.log(diff)

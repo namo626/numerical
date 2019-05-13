@@ -1,4 +1,5 @@
 from collections import namedtuple
+import numpy as np
 import matplotlib.pyplot as plt
 
 Solution = namedtuple('Solution',
@@ -19,4 +20,14 @@ def plotSolution(sol, n):
     t = sol.time
 
     plt.plot(t, x)
+    return 0
+
+# Compare the norm of the separation of the given trajectories over time
+# Both must be on the same time scale
+def diffSolution(sol1, sol2):
+    traj1 = sol1.trajectory
+    traj2 = sol2.trajectory
+    D = np.linalg.norm(traj1-traj2, axis=1)
+
+    plt.plot(sol1.time, D)
     return 0

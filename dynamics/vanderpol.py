@@ -11,6 +11,11 @@ def vanderpol_eq(state):
     y = state[1]
     return np.array([y, mu*(1-x**2)*y - x])
 
-X0 = np.array([2.5, 0])
+X0 = np.array([0.5, 0])
+t = 500
+h = 0.01
 
-vanderpol = rk4(vanderpol_eq, X0, 0, 50, 0.2)
+vp_rk4 = rk4(vanderpol_eq, X0, 0, t, h)
+vp_euler = euler(vanderpol_eq, X0, 0, t, h)
+vp_pc4 = adams_bashforth_moulton4(vanderpol_eq, X0, 0, t, h)
+vp_pc5 = adams_bashforth_moulton5(vanderpol_eq, X0, 0, t, h)

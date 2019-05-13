@@ -3,8 +3,11 @@ import math
 import matplotlib.pyplot as plt
 import importlib
 import solution
+import methods
 importlib.reload(solution)
+importlib.reload(methods)
 from solution import *
+from methods import rk4
 
 def general_method(stepper, F, init, t0, tf, h):
     t     = np.arange(t0, tf+h, h)

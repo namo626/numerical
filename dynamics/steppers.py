@@ -19,11 +19,10 @@ def rk4_step(F, X, i, h):
 ''' Multi-steppers --------------------------------------------------------- '''
 
 def adams_bashforth_4(F, X, i, h):
-    K1 = 55 * F(X[i,:])
-    K2 = -59 * F(X[i-1,:])
-    K3 = 37 * F(X[i-2,:])
-    K4 = -9 * F(X[i-3,:])
-    return X[i,:] + (h/24)*(K1 + K2 + K3 + k4)
+    return X[i,:] + (h/24)*(55 * F(X[i,:])
+                            - 59 * F(X[i-1,:])
+                            + 37 * F(X[i-2,:])
+                            -9 * F(X[i-3,:]))
 
 
 def adams_bashforth_5(F, X, i, h):
@@ -38,11 +37,10 @@ def adams_bashforth_5(F, X, i, h):
 ''' Corrector Methods (to be used with Predictor methods) ------------------- '''
 
 def adams_moulton_4(F, X, i, h, prediction):
-    K1 = 9 * prediction
-    K2 = 19 * F(X[i,:])
-    K3 = -5 * F(X[i-1,:])
-    K4 = F(X[i-2,:])
-    return X[i,:] + (h/24)*(K1 + K2 + K3 + K4)
+    return X[i,:] + (h/24)*(9 * F(prediction)
+                            + 19 * F(X[i,:])
+                            - 5 * F(X[i-1,:])
+                            + F(X[i-2,:]))
 
 def adams_moulton_5(F, X, i, h, prediction):
     return X[i,:] + (h/720)*(251 * F(prediction)
