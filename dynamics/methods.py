@@ -1,6 +1,10 @@
 import importlib
 import lineFlow
+import steppers
 importlib.reload(lineFlow)
+importlib.reload(steppers)
+from lineFlow import *
+from steppers import *
 
 ''' A collection of common methods '''
 

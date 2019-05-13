@@ -41,7 +41,7 @@ def adams_moulton_4(F, X, i, h, prediction):
     K1 = 9 * prediction
     K2 = 19 * F(X[i,:])
     K3 = -5 * F(X[i-1,:])
-    K4 = F([X,i-2,:])
+    K4 = F(X[i-2,:])
     return X[i,:] + (h/24)*(K1 + K2 + K3 + K4)
 
 def adams_moulton_5(F, X, i, h, prediction):
