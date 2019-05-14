@@ -1,6 +1,7 @@
 from collections import namedtuple
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.signal import argrelextrema
 
 Solution = namedtuple('Solution',
                       'time trajectory step dimension')
@@ -30,4 +31,15 @@ def diffSolution(sol1, sol2):
     D = np.linalg.norm(traj1-traj2, axis=1)
 
     plt.plot(sol1.time, D)
+    return 0
+
+# Plot the lorenz map (only useful for lorenz systems)
+def lorenzMap(sol):
+    traj = sol.trajectory
+    zt = traj[:,2]
+    z_max = zt[argrelextrema(zt, np.greater)[0]]
+    zn = z_max[0:-1]
+    zm = z_max[1:]
+
+    plt.scatter(zn, zm)
     return 0

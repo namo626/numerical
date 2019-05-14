@@ -14,14 +14,17 @@ def lorenz_eq(sigma, rho, beta, state):
                      x*(rho-z) - y,
                      x*y - beta*z])
 
-# standard parameters
-F = partial(lorenz_eq, 10, 28, 8/3)
-# initial condition
-X0 = np.array([1.0, 1.0, 1.0])
+F = partial(lorenz_eq, 10, 21, 8/3)
+# X0 = np.array([5, 2, 8])
+X0 = np.array([2, 10, 6])
 
 t0 = 0.0
-tf = 40.0
+tf = 100.0
 h = 0.01
 
 lorenz_rk4 = rk4(F, X0, t0, tf, h)
+lorenz_rk2 = rk2(F, X0, t0, tf, h)
 lorenz_euler = euler(F, X0, t0, tf, h)
+lorenz_pc2 = adams_bashforth_moulton2(F, X0, t0, tf, h)
+lorenz_pc4 = adams_bashforth_moulton4(F, X0, t0, tf, h)
+# lorenz_pc5 = adams_bashforth_moulton5(F, X0, t0, tf, h)

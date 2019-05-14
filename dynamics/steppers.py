@@ -6,6 +6,11 @@ import numpy as np
 def euler_step(F, X, i, h):
     return X[i,:] + h*F(X[i,:])
 
+def rk2_step(F, X, i, h):
+    K1 = F(X[i,:])
+    K2 = F(X[i,:] + h*K1)
+    return X[i,:] + (h/2)*(K1 + K2)
+
 def rk4_step(F, X, i, h):
     Xi = X[i, :]
     K1 = h * F(Xi)
@@ -17,6 +22,10 @@ def rk4_step(F, X, i, h):
 
 
 ''' Multi-steppers --------------------------------------------------------- '''
+
+def adams_bashforth_2(F, X, i, h):
+    return X[i,:] + (h/2)*(3 * F(X[i,:])
+                           - F(X[i-1,:]))
 
 def adams_bashforth_4(F, X, i, h):
     return X[i,:] + (h/24)*(55 * F(X[i,:])
@@ -35,6 +44,10 @@ def adams_bashforth_5(F, X, i, h):
 
 
 ''' Corrector Methods (to be used with Predictor methods) ------------------- '''
+
+def adams_moulton_2(F, X, i, h, prediction):
+    return X[i,:] + (h/2)*(F(prediction)
+                           + F(X[i,:]))
 
 def adams_moulton_4(F, X, i, h, prediction):
     return X[i,:] + (h/24)*(9 * F(prediction)
