@@ -3,11 +3,8 @@ import math
 import matplotlib.pyplot as plt
 import importlib
 import solution
-import methods
 importlib.reload(solution)
-importlib.reload(methods)
 from solution import *
-from methods import rk4
 
 def general_method(stepper, F, init, t0, tf, h):
     t     = np.arange(t0, tf+h, h)
@@ -31,9 +28,9 @@ def singlestep_method(stepper, F, X0, t0, tf, h):
     return general_method(stepper, F, init, t0, tf, h)
 
 
-def multistep_method(N, stepper, F, X0, t0, tf, h):
+def multistep_method(N, gen, stepper, F, X0, t0, tf, h):
     # generate the first N steps (including X0) using a single-step method, e.g. RK4
-    init = rk4(F, X0, t0, t0+(N-1)*h, h)
+    init = gen(F, X0, t0, t0+(N-1)*h, h)
     return general_method(stepper, F, init.trajectory, t0, tf, h)
 
 

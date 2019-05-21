@@ -15,8 +15,8 @@ def lorenz_eq(sigma, rho, beta, state):
                      x*y - beta*z])
 
 F = partial(lorenz_eq, 10, 21, 8/3)
-# X0 = np.array([5, 2, 8])
-X0 = np.array([2, 10, 6])
+X0 = np.array([5, 2, 8])
+# X0 = np.array([2, 10, 6])
 
 t0 = 0.0
 tf = 100.0
