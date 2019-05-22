@@ -16,11 +16,11 @@ def phasePortrait(sol, n, m):
 
 
 # Plot the nth component of the trajectory versus time
-def plotSolution(sol, n):
+def plotSolution(sol, n, **kwargs):
     x = sol.trajectory[:,n]
     t = sol.time
 
-    plt.plot(t, x)
+    plt.plot(t, x, **kwargs)
     return 0
 
 # Compare the norm of the separation of the given trajectories over time

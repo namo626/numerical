@@ -24,7 +24,7 @@ h = 0.01
 
 lorenz_rk4 = rk4(F, X0, t0, tf, h)
 lorenz_rk2 = rk2(F, X0, t0, tf, h)
-lorenz_euler = euler(F, X0, t0, tf, h)
+# lorenz_euler = euler(F, X0, t0, tf, h)
 lorenz_pc2 = adams_bashforth_moulton2(F, X0, t0, tf, h)
 lorenz_pc4 = adams_bashforth_moulton4(F, X0, t0, tf, h)
 # lorenz_pc5 = adams_bashforth_moulton5(F, X0, t0, tf, h)
