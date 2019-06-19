@@ -14,6 +14,11 @@ def phasePortrait(sol, n, m):
     plt.plot(traj[:,n], traj[:,m])
     return 0
 
+def subsample(sol, rate):
+    traj = sol.trajectory[0::rate,:]
+    time = sol.time[0::rate]
+
+    return Solution(time, traj, sol.step, sol.dimension)
 
 # Plot the nth component of the trajectory versus time
 def plotSolution(sol, n, **kwargs):
@@ -43,3 +48,20 @@ def lorenzMap(sol):
 
     plt.scatter(zn, zm)
     return 0
+
+# Find the nearest vector in an array
+def find_nearest(A, v):
+    diff = np.linalg.norm(A - v, axis=1)
+    idx = np.argmin(diff)
+    return A[idx,:]
+
+# Calculate the instances of time that the trajectory repeats
+def recPoints(sol):
+    traj = sol.trajectory
+    p = find_nearest(traj, np.array([-2,0]))
+
+    # Now calculate the number of times traj returns to p
+    diff = np.linalg.norm(traj-p, axis=1)
+    ids = np.where(diff < 1e-3)[0]
+
+    return ids
