@@ -36,7 +36,7 @@ def diffSolution(sol1, sol2):
     D = np.linalg.norm(traj1-traj2, axis=1)
 
     plt.plot(sol1.time, D)
-    return 0
+    return D
 
 # Plot the lorenz map (only useful for lorenz systems)
 def lorenzMap(sol):
